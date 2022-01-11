@@ -4,13 +4,14 @@ db = SQLAlchemy()
 
 class User(db.model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.string(100), nullable=False)
+    username = db.Column(db.String(50), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
 
 class Income(db.model):
     id = db.Column(db.Integer, primary_key=True)
-    income_name =
-    income_type =
-    income_schedule =
-    income_dependants =
-    income_deductions =
-    income_net =
+    income_name = db.Column(db.String(50), nullable=False)
+    income_type = db.Column(db.String(50), nullable=False)
+    income_schedule = db.Column(db.String(50), nullable=False)
+    income_dependants = db.Column(db.Float, nullable=True)
+    income_deductions = db.Column(db.Float, nullable=True)
+    income_net = db.Column(db.Float, nullable=True)
