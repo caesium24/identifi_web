@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, redirect, render_template, url_for
 
 def create_app(test_config=None):
     app = Flask(__name__)
@@ -11,5 +11,16 @@ def create_app(test_config=None):
         app.config.from_pyfile('config.py', silent=True)
     else:
         app.config.from_mapping(test_config)
+    
+    from .models import db
+    db.init_app(app)
+
+    @app.route('/')
+    def index():
+        return redirect(url_for('identifi'))
+    
+    @app.route('/identifi')
+    def identifi():
+
     
     return app
